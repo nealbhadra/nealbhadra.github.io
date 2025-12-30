@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -295,6 +294,44 @@
             color: white;
         }
 
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .notification-success {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .notification-error {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .notification-info {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .section-title {
                 font-size: 2rem;
@@ -306,6 +343,12 @@
 
             .stats-counter {
                 font-size: 2rem;
+            }
+
+            .notification {
+                left: 20px;
+                right: 20px;
+                top: 80px;
             }
         }
     </style>
@@ -720,6 +763,7 @@
                 <p class="text-gray-600 text-lg mt-4">
                     Have questions? I'm here to help. Reach out via Fiverr or fill out the form below.
                 </p>
+                <p class="text-purple-600 font-semibold mt-2">Email: nealbhadra@gmail.com</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -733,28 +777,46 @@
                         <p class="text-gray-600">Usually replies within 2 hours</p>
                     </div>
                     <div class="bg-white rounded-lg p-6 shadow-md">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">📧 Direct Email</h3>
+                        <a href="mailto:nealbhadra@gmail.com" class="text-purple-600 hover:text-purple-800 font-semibold">nealbhadra@gmail.com</a>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-md">
                         <h3 class="text-lg font-bold text-gray-900 mb-2">🌐 Find Me On</h3>
                         <a href="https://www.fiverr.com/nealbhadra" target="_blank"
                             class="text-purple-600 hover:text-purple-800 font-semibold">Fiverr: /nealbhadra</a>
                     </div>
                 </div>
 
-                <form class="bg-white rounded-lg p-8 shadow-md space-y-6" onsubmit="handleSubmit(event)">
+                <form id="contact-form" class="bg-white rounded-lg p-8 shadow-md space-y-6">
                     <div>
                         <label class="block text-sm font-bold text-gray-900 mb-2">Name</label>
-                        <input type="text" required
+                        <input type="text" id="name" name="name" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600"
                             placeholder="Your name">
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-900 mb-2">Email</label>
-                        <input type="email" required
+                        <input type="email" id="email" name="email" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600"
                             placeholder="Your email">
                     </div>
                     <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Project Type</label>
+                        <select id="project-type" name="project-type"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600">
+                            <option value="">Select a service</option>
+                            <option value="data-mining">Data Mining</option>
+                            <option value="lead-generation">Lead Generation</option>
+                            <option value="web-scraping">Web Scraping</option>
+                            <option value="data-entry">Data Entry</option>
+                            <option value="spreadsheet">Spreadsheet Automation</option>
+                            <option value="data-cleaning">Data Cleaning</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
                         <label class="block text-sm font-bold text-gray-900 mb-2">Message</label>
-                        <textarea rows="4" required
+                        <textarea id="message" name="message" rows="4" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600"
                             placeholder="Tell me about your project..."></textarea>
                     </div>
@@ -790,8 +852,8 @@
                     <ul class="space-y-2 text-gray-400 text-sm">
                         <li><a href="https://www.fiverr.com/nealbhadra" target="_blank"
                                 class="hover:text-white transition">Fiverr Profile</a></li>
-                        <li><a href="https://www.fiverr.com/nealbhadra" target="_blank"
-                                class="hover:text-white transition">Send Message</a></li>
+                        <li><a href="mailto:nealbhadra@gmail.com"
+                                class="hover:text-white transition">nealbhadra@gmail.com</a></li>
                     </ul>
                 </div>
                 <div>
@@ -817,12 +879,95 @@
             nav.classList.toggle('expanded');
         }
 
+        function showNotification(message, type = 'success') {
+            // Remove existing notifications
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notification => notification.remove());
+
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
         function handleSubmit(event) {
             event.preventDefault();
-            // In a real scenario, this would send data to a backend
-            alert('Thank you for your message! I will get back to you soon. Please also check my Fiverr profile for faster communication.');
-            event.target.reset();
+            
+            // Get form data
+            const form = event.target;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const projectType = document.getElementById('project-type').value;
+            const message = document.getElementById('message').value;
+            
+            // Log form data to console (for testing/debugging)
+            console.log('Form Data Submitted:');
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Project Type:', projectType);
+            console.log('Message:', message);
+            
+            // Prepare email content
+            const emailSubject = `New Project Inquiry from ${name}`;
+            const emailBody = `
+Name: ${name}
+Email: ${email}
+Project Type: ${projectType || 'Not specified'}
+
+Message:
+${message}
+
+This message was sent from the contact form on your portfolio website.
+            `.trim();
+            
+            // Create mailto link
+            const mailtoLink = `mailto:nealbhadra@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Show confirmation
+            const confirmation = confirm(
+                'Thank you for your message! 🎉\n\n' +
+                'Click OK to open your email client and send this message to nealbhadra@gmail.com.\n' +
+                'Click Cancel if you want to review your message first.'
+            );
+            
+            if (confirmation) {
+                // Open email client
+                window.open(mailtoLink, '_blank');
+                
+                // Show success notification
+                showNotification('✓ Message ready! Please check your email client to send it to nealbhadra@gmail.com', 'success');
+                
+                // Reset form
+                form.reset();
+                
+                // Log success
+                console.log('Form submitted successfully. Email client opened.');
+            } else {
+                // Show info notification
+                showNotification('✗ Message not sent. You can review and send it manually to nealbhadra@gmail.com', 'info');
+                
+                // Log user cancellation
+                console.log('Form submission cancelled by user.');
+            }
         }
+
+        // Add form submit event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleSubmit);
+            }
+        });
 
         // Animate elements on scroll
         const observerOptions = {
@@ -914,9 +1059,23 @@
 
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
+
+        // Add click-to-copy email functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+            emailLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Show notification
+                    showNotification('📧 Email address copied: nealbhadra@gmail.com', 'info');
+                    
+                    // Copy email to clipboard (fallback for non-mailto clicks)
+                    navigator.clipboard.writeText('nealbhadra@gmail.com').then(() => {
+                        console.log('Email copied to clipboard');
+                    });
+                });
+            });
+        });
     </script>
 </body>
 
 </html>
-```
-
