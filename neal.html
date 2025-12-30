@@ -1,0 +1,921 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neal Bhadra - Data & Lead Generation Services | Fiverr</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -50%;
+            right: -10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .gradient-hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            bottom: -20%;
+            left: 5%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(30px);
+            }
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .star-rating {
+            color: #fbbf24;
+            font-size: 18px;
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 40px;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .process-step:nth-child(1)::before {
+            content: '1';
+        }
+
+        .process-step:nth-child(2)::before {
+            content: '2';
+        }
+
+        .process-step:nth-child(3)::before {
+            content: '3';
+        }
+
+        .process-step:nth-child(4)::before {
+            content: '4';
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 50px;
+            width: 2px;
+            height: 40px;
+            background: #e5e7eb;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .price-tag .amount {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        footer {
+            background: #1f2937;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 20px;
+            }
+
+            .stats-counter {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav-blur fixed top-0 w-full z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center text-white font-bold">
+                        NB</div>
+                    <span class="font-bold text-lg text-gray-900">Neal Bhadra</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 transition">Services</a>
+                    <a href="#process" class="text-gray-700 hover:text-purple-600 transition">Process</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-purple-600 transition">Reviews</a>
+                    <a href="https://www.fiverr.com/nealbhadra" target="_blank" class="btn-primary text-sm">Visit
+                        Fiverr</a>
+                </div>
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-hero pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-white relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Expert Data & Lead Generation Services
+                    </h1>
+                    <p class="text-lg mb-8 text-purple-100">
+                        Transform your business with professional data mining, web scraping, lead generation, and
+                        spreadsheet automation services. Trusted by hundreds of clients worldwide.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                            class="btn-primary text-center">Start Your Project</a>
+                        <button class="btn-secondary text-center"
+                            onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })">Learn
+                            More</button>
+                    </div>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.2s">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-8 text-center hover-lift">
+                            <div class="stats-counter">500+</div>
+                            <p class="text-purple-100 mt-2">Completed Projects</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-8 text-center hover-lift">
+                            <div class="stats-counter">4.9/5</div>
+                            <p class="text-purple-100 mt-2">Average Rating</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-8 text-center hover-lift">
+                            <div class="stats-counter">200+</div>
+                            <p class="text-purple-100 mt-2">Happy Clients</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-8 text-center hover-lift">
+                            <div class="stats-counter">24/7</div>
+                            <p class="text-purple-100 mt-2">Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">My Services</h2>
+                <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">
+                    Comprehensive data solutions tailored to your business needs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Data Mining -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">⛏️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Mining</h3>
+                    <p class="text-gray-600 mb-4">
+                        Extract valuable insights from large datasets. I'll collect, clean, and organize data from
+                        multiple sources to support your business intelligence needs.
+                    </p>
+                    <ul class="feature-list text-sm">
+                        <li>Database extraction</li>
+                        <li>Pattern identification</li>
+                        <li>Statistical analysis</li>
+                        <li>Predictive modeling</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Lead Generation -->
+                <div class="service-card fade-in" style="animation-delay: 0.1s">
+                    <div class="service-icon">🎯</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Lead Generation</h3>
+                    <p class="text-gray-600 mb-4">
+                        Build qualified lead lists from targeted sources. Find decision-makers and prospects in your
+                        industry with verified contact information.
+                    </p>
+                    <ul class="feature-list text-sm">
+                        <li>B2B lead lists</li>
+                        <li>Email & phone verification</li>
+                        <li>Industry-specific targeting</li>
+                        <li>LinkedIn & social research</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Web Scraping -->
+                <div class="service-card fade-in" style="animation-delay: 0.2s">
+                    <div class="service-icon">🕷️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Web Scraping</h3>
+                    <p class="text-gray-600 mb-4">
+                        Extract data from websites efficiently and legally. Perfect for competitor analysis, price
+                        monitoring, and market research.
+                    </p>
+                    <ul class="feature-list text-sm">
+                        <li>Multi-page scraping</li>
+                        <li>Dynamic content extraction</li>
+                        <li>Automated updates</li>
+                        <li>Data validation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Data Entry -->
+                <div class="service-card fade-in" style="animation-delay: 0.3s">
+                    <div class="service-icon">⌨️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Entry</h3>
+                    <p class="text-gray-600 mb-4">
+                        Accurate and efficient data entry into spreadsheets, databases, or any format. Meticulous
+                        attention to detail for error-free results.
+                    </p>
+                    <ul class="feature-list text-sm">
+                        <li>Manual data input</li>
+                        <li>Form processing</li>
+                        <li>Data validation</li>
+                        <li>Quality assurance</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5: Spreadsheet Work -->
+                <div class="service-card fade-in" style="animation-delay: 0.4s">
+                    <div class="service-icon">📊</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Spreadsheet Automation</h3>
+                    <p class="text-gray-600 mb-4">
+                        Create powerful Excel and Google Sheets with formulas, pivot tables, and automated workflows.
+                        Save time and reduce errors.
+                    </p>
+                    <ul class="feature-list text-sm">
+                        <li>Advanced formulas & functions</li>
+                        <li>Pivot table creation</li>
+                        <li>Data visualization</li>
+                        <li>Macro automation</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6: Data Cleaning -->
+                <div class="service-card fade-in" style="animation-delay: 0.5s">
+                    <div class="service-icon">🧹</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Data Cleaning</h3>
+                    <p class="text-gray-600 mb-4">
+                        Transform messy data into clean, usable datasets. Remove duplicates, standardize formats, and
+                        ensure data integrity.
+                    </p>
+                    <ul class="feature-list text-sm">
+                        <li>Duplicate removal</li>
+                        <li>Format standardization</li>
+                        <li>Missing value handling</li>
+                        <li>Data consistency</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="section-title mb-8">How I Work</h2>
+                    <div class="space-y-6">
+                        <div class="process-step">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Initial Consultation</h3>
+                            <p class="text-gray-600">
+                                We discuss your requirements, scope, timeline, and budget. I'll ask detailed questions
+                                to understand your project fully.
+                            </p>
+                        </div>
+                        <div class="process-step">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Project Planning</h3>
+                            <p class="text-gray-600">
+                                I create a detailed plan with milestones, deliverables, and quality checks to ensure
+                                successful completion.
+                            </p>
+                        </div>
+                        <div class="process-step">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Execution</h3>
+                            <p class="text-gray-600">
+                                I work diligently using best practices and tools. Regular updates keep you informed of
+                                progress.
+                            </p>
+                        </div>
+                        <div class="process-step">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Delivery & Support</h3>
+                            <p class="text-gray-600">
+                                Final quality assurance, timely delivery, and ongoing support to ensure your complete
+                                satisfaction.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-12">
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">✓ Quality Guaranteed</h4>
+                            <p class="text-sm text-gray-600">100% accuracy and timely delivery on every project</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">✓ Confidential</h4>
+                            <p class="text-sm text-gray-600">Your data and information are always kept secure</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">✓ Professional</h4>
+                            <p class="text-sm text-gray-600">Years of experience in data management and analysis</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-6 shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">✓ Flexible</h4>
+                            <p class="text-sm text-gray-600">Custom solutions tailored to your unique needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Flexible Pricing</h2>
+                <p class="text-gray-600 text-lg mt-4">
+                    Choose from preset packages or request custom pricing for your specific needs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card text-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Basic Package</h3>
+                    <p class="text-gray-600 mb-4">Perfect for small projects</p>
+                    <div class="price-tag">
+                        <span>From</span>
+                        <div class="amount">$20</div>
+                    </div>
+                    <ul class="feature-list text-sm text-left mb-6">
+                        <li>Up to 500 records</li>
+                        <li>1-2 day delivery</li>
+                        <li>1 revision included</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                        class="btn-primary w-full text-center">Order Now</a>
+                </div>
+
+                <div class="service-card text-center border-2 border-purple-600 relative">
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                        POPULAR
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Standard Package</h3>
+                    <p class="text-gray-600 mb-4">Ideal for most businesses</p>
+                    <div class="price-tag">
+                        <span>From</span>
+                        <div class="amount">$50</div>
+                    </div>
+                    <ul class="feature-list text-sm text-left mb-6">
+                        <li>Up to 2000 records</li>
+                        <li>Same day delivery</li>
+                        <li>3 revisions included</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                        class="btn-primary w-full text-center">Order Now</a>
+                </div>
+
+                <div class="service-card text-center">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Premium Package</h3>
+                    <p class="text-gray-600 mb-4">For large-scale projects</p>
+                    <div class="price-tag">
+                        <span>From</span>
+                        <div class="amount">$100+</div>
+                    </div>
+                    <ul class="feature-list text-sm text-left mb-6">
+                        <li>Unlimited records</li>
+                        <li>24-hour turnaround</li>
+                        <li>Unlimited revisions</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                        class="btn-primary w-full text-center">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Client Reviews</h2>
+                <p class="text-gray-600 text-lg mt-4">What clients say about my work</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card fade-in">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Neal completed my lead generation project with exceptional quality. The data was clean,
+                        accurate, and delivered ahead of schedule. Highly recommended!"
+                    </p>
+                    <p class="font-bold text-gray-900">Sarah Johnson</p>
+                    <p class="text-sm text-gray-600">Marketing Director</p>
+                </div>
+
+                <div class="testimonial-card fade-in" style="animation-delay: 0.1s">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Professional, reliable, and extremely knowledgeable. Neal helped us scrape and organize complex
+                        data from multiple websites. Perfect execution!"
+                    </p>
+                    <p class="font-bold text-gray-900">Michael Chen</p>
+                    <p class="text-sm text-gray-600">Business Analyst</p>
+                </div>
+
+                <div class="testimonial-card fade-in" style="animation-delay: 0.2s">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Outstanding spreadsheet automation! Neal created complex formulas that saved us hours of manual
+                        work every week. Great communication throughout."
+                    </p>
+                    <p class="font-bold text-gray-900">Emily Rodriguez</p>
+                    <p class="text-sm text-gray-600">Operations Manager</p>
+                </div>
+
+                <div class="testimonial-card fade-in" style="animation-delay: 0.3s">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 italic mb-4">
+                        "I've worked with Neal on multiple projects. Every single time, the quality is exceptional and
+                        the communication is transparent. Trustworthy professional!"
+                    </p>
+                    <p class="font-bold text-gray-900">David Wilson</p>
+                    <p class="text-sm text-gray-600">Project Manager</p>
+                </div>
+
+                <div class="testimonial-card fade-in" style="animation-delay: 0.4s">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Fast turnaround, accurate results, and willing to make revisions. Neal goes above and beyond to
+                        ensure client satisfaction. Best in the business!"
+                    </p>
+                    <p class="font-bold text-gray-900">Jessica Lee</p>
+                    <p class="text-sm text-gray-600">Startup Founder</p>
+                </div>
+
+                <div class="testimonial-card fade-in" style="animation-delay: 0.5s">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 italic mb-4">
+                        "Data mining project for market research. Neal understood our requirements perfectly and
+                        delivered exactly what we needed. Excellent work!"
+                    </p>
+                    <p class="font-bold text-gray-900">Robert Taylor</p>
+                    <p class="text-sm text-gray-600">Research Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-hero py-20 px-4 sm:px-6 lg:px-8 text-white relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
+            <p class="text-lg text-purple-100 mb-8">
+                Let's discuss your project and find the perfect solution for your data needs.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                    class="btn-primary text-center text-lg px-8 py-3">Visit My Fiverr Profile</a>
+                <button class="btn-secondary text-center text-lg px-8 py-3"
+                    onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Send
+                    Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="text-gray-600 text-lg mt-4">
+                    Have questions? I'm here to help. Reach out via Fiverr or fill out the form below.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">📍 Based In</h3>
+                        <p class="text-gray-600">Available for clients worldwide</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">⏰ Response Time</h3>
+                        <p class="text-gray-600">Usually replies within 2 hours</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-md">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">🌐 Find Me On</h3>
+                        <a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                            class="text-purple-600 hover:text-purple-800 font-semibold">Fiverr: /nealbhadra</a>
+                    </div>
+                </div>
+
+                <form class="bg-white rounded-lg p-8 shadow-md space-y-6" onsubmit="handleSubmit(event)">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Name</label>
+                        <input type="text" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600"
+                            placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Email</label>
+                        <input type="email" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600"
+                            placeholder="Your email">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-900 mb-2">Message</label>
+                        <textarea rows="4" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-purple-600"
+                            placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full text-center">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-white mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#services" class="hover:text-white transition">Data Mining</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Lead Generation</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Web Scraping</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Data Entry</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#process" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#testimonials" class="hover:text-white transition">Reviews</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Connect</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                                class="hover:text-white transition">Fiverr Profile</a></li>
+                        <li><a href="https://www.fiverr.com/nealbhadra" target="_blank"
+                                class="hover:text-white transition">Send Message</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white mb-4">Newsletter</h3>
+                    <p class="text-gray-400 text-sm mb-4">Subscribe for updates and special offers</p>
+                    <input type="email" placeholder="Your email"
+                        class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded text-white text-sm focus:outline-none focus:border-purple-600" />
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+                    <p>&copy; 2024 Neal Bhadra. All rights reserved.</p>
+                    <p>Specialized in Data Management & Lead Generation</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            // Mobile menu toggle functionality
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('expanded');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            // In a real scenario, this would send data to a backend
+            alert('Thank you for your message! I will get back to you soon. Please also check my Fiverr profile for faster communication.');
+            event.target.reset();
+        }
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and testimonials
+        document.querySelectorAll('.service-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stats-counter');
+            counters.forEach(counter => {
+                const text = counter.textContent;
+                const number = parseFloat(text);
+                const isFloat = text.includes('.');
+                const unit = text.replace(/[0-9.]/g, '').trim();
+
+                let current = 0;
+                const increment = number / 50;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < number) {
+                        counter.textContent = current.toFixed(isFloat ? 1 : 0) + unit;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = text;
+                    }
+                };
+
+                const counterObserver = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) {
+                        updateCounter();
+                        counterObserver.unobserve(counter);
+                    }
+                });
+
+                counterObserver.observe(counter);
+            });
+        }
+
+        animateCounters();
+
+        // Add scroll animation to header
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 100) {
+                navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+</body>
+
+</html>
+```
